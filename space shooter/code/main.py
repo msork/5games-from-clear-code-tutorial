@@ -1,4 +1,7 @@
+from random import randint
+
 import pygame
+from os.path import join
 
 # general setup
 pygame.init()
@@ -13,7 +16,11 @@ surf.fill('orange')
 x = 100
 
 # importing an image
-player_surf = pygame.image.load('../images/player.png')
+player_surf = pygame.image.load(join('..', 'images', 'player.png')).convert_alpha()
+
+star_surf = pygame.image.load(join('..', 'images', 'star.png')).convert_alpha()
+
+stars_pos = [(randint(0,WINDOW_WIDTH), randint(0,WINDOW_HEIGHT)) for i in range (20)]
 
 while running:
     # event loop
@@ -25,6 +32,10 @@ while running:
     display_surface.fill('darkgray')
     x += 0.1
     display_surface.blit(player_surf, (x,150))
+
+    for star_pos in stars_pos:
+        display_surface.blit(star_surf, star_pos)
+
     pygame.display.update()
 
 
