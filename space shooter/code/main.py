@@ -13,4 +13,7 @@ while running:
             running = False
 
     # draw the game
+    pygame.display.update()
+
+
 pygame.quit()
